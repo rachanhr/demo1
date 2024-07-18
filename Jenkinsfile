@@ -13,8 +13,11 @@ ipeline {
 }
 
 stage('test') {
+	step {
+		sh 'echo rk'
+	}
            post {
-		
+		always {
    		 archiveArtifacts artifacts: 'Amazon-Core/target/**.jar', followSymlinks: false
     	 	}
 }
