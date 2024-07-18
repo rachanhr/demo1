@@ -1,30 +1,27 @@
-pipeline {
+ipeline {
+
 	agent any
-	
+	tools {
+ 		 maven 'm398'
+		}
+
 	stages {
-		stage ('build') {
-			steps {
-				sh 'mvn clean install -DskipTests'
-			}
-		
-		}
-		stage ('test') {
-			steps {
-				sh 'mvn test'
-			}
-			post {
-				always {
-					junit 'target/surefire-reports/*.*xml'
-					archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
-				}
-			}
-		}
-		stage ('build image') {
-			steps {
-				sh 'docker build .'
-			}
-		
-		}
-	
-	}
+ 	 stage('build') {
+  	  steps {
+      	    sh 'mvn install -DskipTests'
+  }
+}
+
+stage('test') {
+	steps  {
+		sh 'mvn test'
+	   }
+   	post {
+		always {
+   		 archiveArtifacts artifacts: 'Amazon-Core/target/**.jar', followSymlinks: false
+    	 	}
+}
+
+    }
+  }
 }
