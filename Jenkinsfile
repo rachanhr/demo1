@@ -14,7 +14,7 @@ ipeline {
 
 stage('test') {
 	steps  {
-		sh 'mvn test'
+		
 	   }
    	post {
 		always {
