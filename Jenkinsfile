@@ -13,15 +13,12 @@ ipeline {
 }
 
 stage('test') {
-	steps  {
+           post {
 		
-	   }
-   	post {
-		always {
    		 archiveArtifacts artifacts: 'Amazon-Core/target/**.jar', followSymlinks: false
     	 	}
 }
 
     }
   }
-}
+
