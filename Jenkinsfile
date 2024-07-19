@@ -1,11 +1,11 @@
 pipeline {
 
 	agent any
-	parameters {
-  string defaultValue: 'rk', name: 'name', trim: true
-}
+	tools {
+ 		 maven 'm398'
+		}
 
-		stages {
+	stages {
  	 stage('build') {
   	  steps {
       	    sh 'mvn install -DskipTests'
@@ -13,18 +13,15 @@ pipeline {
 }
 
 stage('test') {
-	step {
-		withCredentials([usernameColonPassword(credentialsId: 'adca75dd-93e6-49c2-83de-86de3d854b6d', variable: 'login')]) { 
+	steps  {
+		sh 'mvn test'
+	   }
+   	post {
+                 archiveArtifacts artifacts: 'target/**.jar', followSymlinks: false
+                 junit stdioRetention: '', testResults: 'target/surefire-report/*.xml'
 
-sh 'dcoker login'
-}
-	}
-           post {
-		always {
-   		 archiveArtifacts artifacts: 'Amazon-Core/target/**.jar', followSymlinks: false
     	 	}
 }
 
     }
   }
-}
