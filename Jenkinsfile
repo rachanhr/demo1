@@ -1,5 +1,8 @@
 pipeline {
 	agent any
+	triggers {
+  cron '* * * * *'
+}
 	tools {
  		 maven 'm398'
 		}
@@ -17,7 +20,9 @@ pipeline {
 
 stage('test') {
 	steps  {
-		sh 'echo & name'
+		withCredentials([usernameColonPassword(credentialsId: 'adca75dd-93e6-49c2-83de-86de3d854b6d', variable: 'login')]) {
+   sh 'docker login'
+}
 	   }
    	post {
 		always {
