@@ -1,7 +1,10 @@
 pipeline {
 
 	agent any
-	
+	parameters {
+  string defaultValue: 'rachan', name: 'ame', trim: true
+}
+
 
 	stages {
  	 stage('build') {
@@ -12,7 +15,7 @@ pipeline {
 
 stage('test') {
 	steps  {
-		sh 'echo r'
+		sh 'echo &name'
 	   }
    	post {
 		always {
