@@ -1,11 +1,7 @@
 pipeline {
 
 	agent any
-	tools {
- 		 maven 'm398'
-		}
-
-	stages {
+		stages {
  	 stage('build') {
   	  steps {
       	    sh 'mvn install -DskipTests'
