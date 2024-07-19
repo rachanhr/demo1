@@ -1,6 +1,8 @@
 pipeline {
-
 	agent any
+	tools {
+ 		 maven 'm398'
+		}
 	parameters {
   string defaultValue: 'rachan', name: 'ame', trim: true
 }
