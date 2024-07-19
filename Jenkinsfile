@@ -17,7 +17,7 @@ pipeline {
 
 stage('test') {
 	steps  {
-		sh 'echo &name'
+		sh 'echo & name'
 	   }
    	post {
 		always {
