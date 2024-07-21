@@ -29,8 +29,6 @@ stage('test') {
     	 	}
 }
 
-    }
-stage('delet') { 
-deleteDir()
+
 }
-}
+
