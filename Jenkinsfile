@@ -1,4 +1,4 @@
-pipeline {
+pipeline 
 	{
 	
 	agent any
@@ -26,6 +26,4 @@ stage('test') {
                  junit stdioRetention: '', testResults: 'target/surefire-report/*.xml'
 
     	 	}
-
-}
 
