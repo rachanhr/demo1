@@ -1,4 +1,6 @@
 pipeline {
+	{
+	
 	agent any
 	tools { 
 		maven 'm398'
@@ -25,5 +27,5 @@ stage('test') {
 
     	 	}
 
-      
+}
 
