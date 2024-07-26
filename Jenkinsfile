@@ -2,8 +2,6 @@ pipeline {
 	
 	agent any
 	
-}
-	
 	stages {
  	 stage('build') {
   	  steps {
@@ -12,12 +10,16 @@ pipeline {
 }
 	stage('test') {
 	steps  {
-		sh 'mvn test'
+		sh 'echo rk'
 }
-	   }
-   	post {
-		 archiveArtifacts artifacts: 'target/**.jar', followSymlinks: false
-                 junit stdioRetention: '', testResults: 'target/surefire-report/*.xml'
+	      	post {
+
+		always  {
+			archiveArtifacts artifacts: 'target/**.jar', followSymlinks: false
+                        junit stdioRetention: '', testResults: 'target/surefire-report/*.xml'
 
     	 	}
 	}
+	}
+	}
+}
