@@ -14,7 +14,7 @@ pipeline {
 	stage('test') {
 	steps  {
 		withCredentials([usernameColonPassword(credentialsId: 'a696f21b-fc83-4df4-b628-62cf3f09710e', variable: 'login')]) {
-    sh 'docker login'
+    sh 'docker login -u rachanhr -p &login'
 }
 }
 	      	post {
