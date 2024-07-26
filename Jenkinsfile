@@ -4,7 +4,6 @@ pipeline {
 	tools { 
 		maven 'm398'
 }
-}
 	
 	stages {
  	 stage('build') {
@@ -12,9 +11,7 @@ pipeline {
       	    sh 'mvn install -DskipTests'
   }
 }
-	}
-
-stage('test') {
+	stage('test') {
 	steps  {
 		sh 'mvn test'
 }
@@ -25,4 +22,6 @@ stage('test') {
                  junit stdioRetention: '', testResults: 'target/surefire-report/*.xml'
 
     	 	}
+	}
+}
 
